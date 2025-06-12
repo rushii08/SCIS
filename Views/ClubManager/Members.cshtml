@@ -1,0 +1,35 @@
+@model IEnumerable<SCIS.Models.Membership>
+
+@{
+    ViewData["Title"] = "Club Members";
+}
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Club Members</h1>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-users me-1"></i> Members List
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Joined At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var member in Model)
+                    {
+                        <tr>
+                            <td>@member.User?.FullName</td>
+                            <td>@member.User?.Email</td>
+                            <td>@(member.JoinedAt?.ToShortDateString())</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+@model IEnumerable<SCIS.Models.Event>
+
+@{
+    ViewData["Title"] = "Club Events";
+}
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Club Events</h1>
+    <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <span><i class="fas fa-calendar-alt me-1"></i> Events List</span>
+            <a asp-action="CreateEvent" asp-route-clubId="@ViewBag.ClubId" class="btn btn-sm btn-success">
+                <i class="fas fa-plus"></i> Create Event
+            </a>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var evt in Model)
+                    {
+                        <tr>
+                            <td>@evt.Name</td>
+                            <td>@evt.EventDate.ToShortDateString()</td>
+                            <td>@evt.Location</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
